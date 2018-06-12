@@ -280,6 +280,13 @@
             <artifactId>spring-security-web</artifactId>
             <scope>compile</scope>
         </dependency>
+        <!-- Atomikos -->
+        <dependency>
+            <groupId>com.atomikos</groupId>
+            <artifactId>transactions-jdbc</artifactId>
+            <version>4.0.5</version>
+            <scope>provided</scope>
+        </dependency>
     </dependencies>
 
     <build>
