@@ -10,15 +10,18 @@
  */
 package psiprobe;
 
+import java.io.IOException;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Locale;
 import java.util.Map;
+import java.util.Map.Entry;
 import java.util.Properties;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+import org.springframework.beans.factory.FactoryBean;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.config.PropertiesFactoryBean;
 import org.springframework.beans.factory.config.PropertyPlaceholderConfigurer;
@@ -35,7 +38,7 @@ import org.springframework.web.servlet.ThemeResolver;
 import org.springframework.web.servlet.ViewResolver;
 import org.springframework.web.servlet.config.annotation.EnableWebMvc;
 import org.springframework.web.servlet.config.annotation.InterceptorRegistry;
-import org.springframework.web.servlet.config.annotation.WebMvcConfigurerAdapter;
+import org.springframework.web.servlet.config.annotation.WebMvcConfigurer;
 import org.springframework.web.servlet.handler.BeanNameUrlHandlerMapping;
 import org.springframework.web.servlet.i18n.CookieLocaleResolver;
 import org.springframework.web.servlet.i18n.LocaleChangeInterceptor;
@@ -86,7 +89,7 @@ import psiprobe.tools.Mailer;
 @EnableWebMvc
 @Configuration
 @ComponentScan(basePackages = {"psiprobe"})
-public class ProbeConfig extends WebMvcConfigurerAdapter {
+public class ProbeConfig implements WebMvcConfigurer {
 
   /** The Constant logger. */
   private static final Logger logger = LoggerFactory.getLogger(ProbeConfig.class);
@@ -227,16 +230,31 @@ public class ProbeConfig extends WebMvcConfigurerAdapter {
    *
    * @return the stdout files
    */
-  // TODO We should make this configurable
   @Bean(name = "stdoutFiles")
   public List<String> getStdoutFiles() {
     logger.debug("Instantiated stdoutFiles");
     List<String> list = new ArrayList<>();
-    list.add("catalina.out");
-    list.add("wrapper.log");
-    list.add("stdout.log");
-    list.add("stdout.err");
+    try {
+        for (Entry<Object, Object> entry : stdout().getObject().entrySet()) {
+            list.add((String) entry.getValue());
+        }
+    } catch (Exception e) {
+        logger.error("", e);
+    }
     return list;
+  }
+
+  /**
+   * Version.
+   *
+   * @return the properties factory bean
+   */
+  @Bean(name = "stdout")
+  public FactoryBean<Properties> stdout() {
+    logger.debug("Instantiated stdout");
+    PropertiesFactoryBean bean = new PropertiesFactoryBean();
+    bean.setLocation(new ClassPathResource("stdout.properties"));
+    return bean;
   }
 
   /**

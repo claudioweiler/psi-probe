@@ -4,8 +4,7 @@
 [![Coverity Scan Build Status](https://scan.coverity.com/projects/11611/badge.svg)](https://scan.coverity.com/projects/11611)
 [![Coverage Status](https://coveralls.io/repos/github/psi-probe/psi-probe/badge.svg?branch=master)](https://coveralls.io/github/psi-probe/psi-probe?branch=master)
 [![Maven central](https://maven-badges.herokuapp.com/maven-central/com.github.psi-probe/psi-probe-web/badge.svg)](https://maven-badges.herokuapp.com/maven-central/com.github.psi-probe/psi-probe-web)
-[![releases](http://github-release-version.herokuapp.com/github/psi-probe/psi-probe/release.svg?style=flat)](https://github.com/psi-probe/psi-probe/releases/tag/3.0.0)
-[![Dependency Status](https://www.versioneye.com/user/projects/569bd2562025a60031000001/badge.svg?style=flat)](https://www.versioneye.com/user/projects/569bd2562025a60031000001)
+[![releases](http://github-release-version.herokuapp.com/github/psi-probe/psi-probe/release.svg?style=flat)](https://github.com/psi-probe/psi-probe/releases/download/3.1.0/probe.war)
 [![GPLv2 License](https://img.shields.io/badge/license-GPLv2-green.svg)](https://www.gnu.org/licenses/old-licenses/gpl-2.0.html)
 [![Project Stats](https://www.openhub.net/p/psi-probe/widgets/project_thin_badge.gif)](https://www.openhub.net/p/psi-probe)
 [![Github All Releases](https://img.shields.io/github/downloads/psi-probe/psi-probe/total.svg)]()
@@ -21,9 +20,21 @@
 
 See [CONTRIBUTING.md](CONTRIBUTING.md) for info on working on PSI Probe and sending patches.
 
-## Latest Snapshot ##
+## Latest Release via Github Releases ##
 
-Please download latest snapshots from [here](https://oss.sonatype.org/content/repositories/snapshots/com/github/psi-probe/)
+Please download latest probe.war from [here](https://github.com/psi-probe/psi-probe/releases/download/3.1.0/probe.war)
+
+## Latest Release via Maven Central ##
+
+Please download latest psi-probe-web.war release from [here](https://oss.sonatype.org/content/repositories/releases/com/github/psi-probe/psi-probe-web/)
+
+You can rename 'psi-probe-web.war' to the traditional 'probe.war' or other name as you see fit.
+
+## Latest Snapshot via Maven Central ##
+
+Please download latest psi-probe-web.war snapshots from [here](https://oss.sonatype.org/content/repositories/snapshots/com/github/psi-probe/psi-probe-web/)
+
+You can rename 'psi-probe-web.war' to the traditional 'probe.war' or other name as you see fit.
 
 ## Building from Source ##
 
